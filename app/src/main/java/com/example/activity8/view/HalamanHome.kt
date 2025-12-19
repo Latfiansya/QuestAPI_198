@@ -44,11 +44,12 @@ import com.example.activity8.viewmodel.StatusUiSiswa
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    // edit 1.1 : tambahkan parameter navigateToItemEntry
     navigateToItemEntry: () -> Unit,
-    //edit 2.0 : tambahakan parameter navigateToItemUpdate
+    // edit 2.4 : tambahkan parameter navigateToItemUpdate
     navigateToItemUpdate: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -75,13 +76,10 @@ fun HomeScreen(
         }
     ) { innerPadding ->
         HomeBody(
-            uiStateSiswa = viewModel.listSiswa,
+            uiStateSiswa = homeViewModel.listSiswa,
             //edit 2.1 : tambahkan event onClickSiswa
-            onSiswaClick = {
-                viewModel.listSiswa = StatusUiSiswa.Loading
-                navigateToItemUpdate(it.id)
-            },
-            retryAction = { viewModel.loadSiswa() },
+            onSiswaClick = { navigateToItemUpdate(it.id) },
+            retryAction = homeViewModel::loadSiswa,
             modifier = modifier
                 .padding(innerPadding)
                 .fillMaxSize()
@@ -120,7 +118,7 @@ fun HomeBody(
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
         modifier = modifier.size(200.dp),
-        painter = painterResource(R.drawable.loading_sing),
+        painter = painterResource(R.drawable.loading_img),
         contentDescription = stringResource(R.string.loading)
     )
 }
@@ -132,7 +130,7 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = stringResource(R.string.deskripsi_error), modifier = Modifier.padding(16.dp))
+        Text(text = stringResource(R.string.gagal), modifier = Modifier.padding(16.dp))
         Button(onClick = retryAction) {
             Text(stringResource(R.string.retry))
         }
