@@ -26,6 +26,10 @@ interface RepositoryDataSiswa{
 class JaringanRepositoryDataSiswa(
     private val serviceApiSiswa: ServiceApiSiswa
 ):RepositoryDataSiswa{
+    /**
+     * Mengimplementasikan `getDataSiswa` dengan mendelegasikan panggilan
+     * langsung ke fungsi `getSiswa()` dari `serviceApiSiswa`.
+     */
     override suspend fun getDataSiswa(): List<DataSiswa> = serviceApiSiswa.getSiswa()
     override suspend fun postDataSiswa(dataSiswa: DataSiswa): retrofit2.Response<Void> = serviceApiSiswa.postSiswa(dataSiswa)
     override suspend fun getSatuSiswa(id: Int): DataSiswa = serviceApiSiswa.getSatuSiswa(id)
