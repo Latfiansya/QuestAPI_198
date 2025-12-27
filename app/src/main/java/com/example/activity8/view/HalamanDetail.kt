@@ -61,6 +61,7 @@ fun DetailSiswaScreen(
         floatingActionButton = {
             val uiState = viewModel.statusUIDetail
             FloatingActionButton(
+                // Mengekstrak ID siswa dari state yang berhasil (Success) untuk navigasi ke halaman edit.
                 onClick = {
                     when(uiState){
                         is StatusUIDetail.Success->
