@@ -14,11 +14,9 @@ import com.example.activity8.view.EntrySiswaScreen
 import com.example.activity8.view.HomeScreen
 
 @Composable
-fun DataSiswaApp(navController: NavHostController = rememberNavController(),
-                 modifier: Modifier) {
+fun DataSiswaApp(navController: NavHostController = rememberNavController(), modifier: Modifier){
     HostNavigasi(navController = navController)
 }
-
 @Composable
 fun HostNavigasi(
     navController: NavHostController,
