@@ -3,6 +3,12 @@ package com.example.activity8.repositori
 import com.example.activity8.apiservice.ServiceApiSiswa
 import com.example.activity8.modeldata.DataSiswa
 
+/**
+ * Interface ini mendefinisikan "kontrak" untuk operasi data siswa.
+ * Dengan menggunakan interface, kita memisahkan logika bisnis (di ViewModel)
+ * dari implementasi detail cara mendapatkan data (misalnya dari jaringan, database lokal, dll).
+ * Ini membuat kode lebih mudah diuji (testable) dan fleksibel.
+ */
 interface RepositoryDataSiswa{
     suspend fun getDataSiswa(): List<DataSiswa>
     suspend fun postDataSiswa(dataSiswa: DataSiswa) :retrofit2.Response<Void>
