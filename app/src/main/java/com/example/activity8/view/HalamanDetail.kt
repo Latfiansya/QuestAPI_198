@@ -99,10 +99,7 @@ fun DetailSiswaScreen(
     }
 }
 
-/**
- * Composable untuk menampilkan detail lengkap dari satu data siswa.
- * Bertanggung jawab untuk menyusun informasi dalam sebuah Card.
- */
+
 @Composable
 private fun BodyDetailDataSiswa(
     statusUIDetail: StatusUIDetail,
@@ -145,6 +142,11 @@ private fun BodyDetailDataSiswa(
     }
 }
 
+
+/**
+ * Composable untuk menampilkan detail lengkap dari satu data siswa.
+ * Bertanggung jawab untuk menyusun informasi dalam sebuah Card.
+ */
 @Composable
 fun DetailDataSiswa(
     siswa: DataSiswa, modifier: Modifier = Modifier
