@@ -17,6 +17,12 @@ interface RepositoryDataSiswa{
     suspend fun hapusSatuSiswa(id:Int):retrofit2.Response<Void>
 }
 
+/**
+ * Implementasi konkret dari [RepositoryDataSiswa] yang mengambil data dari jaringan (network).
+ * Kelas ini bergantung pada [ServiceApiSiswa] (dari Retrofit) untuk melakukan panggilan API sebenarnya.
+ *
+ * @param serviceApiSiswa instance dari layanan Retrofit yang sudah dikonfigurasi.
+ */
 class JaringanRepositoryDataSiswa(
     private val serviceApiSiswa: ServiceApiSiswa
 ):RepositoryDataSiswa{
