@@ -81,6 +81,7 @@ fun DetailSiswaScreen(
         modifier = modifier
     ) { innerPadding ->
 
+        // CoroutineScope digunakan untuk menjalankan operasi suspend (seperti hapus data) di dalam callback Composable.
         val coroutineScope = rememberCoroutineScope()
 
         BodyDetailDataSiswa(
